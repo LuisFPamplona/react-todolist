@@ -7,7 +7,7 @@ const TodoList = () => {
 
   return (
     <>
-      <div>
+      <div className="toDoList">
         <AdicionarTask setTaskList={setTaskList} taskList={taskList} />
         <Task setTaskList={setTaskList} taskList={taskList} />
       </div>

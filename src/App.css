@@ -5,11 +5,44 @@
   text-align: center;
 }
 
-.taskContainer {
-  /* max-width: 500px; */
 
-  margin-top: 5px;
+.taskContainer {
+  margin-top: 15px;
+
+  min-height: 40px;
 
   display: flex;
   justify-content: space-between;
+  align-items: center;
+
+  border: solid 0.5px rgb(105, 104, 104);
+  box-shadow: 0.5px 0.5px 5px rgb(97, 96, 96);
+}
+.taskContainer li {
+  margin-left: 5px;
+  margin-right: 5px;
+
+  text-align: left;
+}
+.buttonContainer {
+  display: flex;
+  height: 25px;
+  margin-right: 5px;
+}
+.taskInput {
+  display: flex;
+  justify-content: space-around;
+}
+.taskInput input {
+  max-height: 30px;
+  max-width: 100%;
+  font-size: 16pt;
+}
+.taskInput button {
+  background-color: transparent;
+  margin-left: 5px;
+  border-radius: 10px;
+  height: 36px;
+  font-size: 16pt;
+  font: bold 12pt Arial;
 }
