@@ -4,13 +4,16 @@ const AdicionarTask = ({ setTaskList, taskList }) => {
   const inputRef = useRef();
 
   const setNewTaskList = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     const newTask = {
       text: inputRef.current.value,
       id: Date.now(),
     };
 
-    setTaskList([...taskList, newTask]);
+    setTaskList(() => {
+      const newTaskList = [...taskList, newTask];
+      return newTaskList;
+    });
 
     inputRef.current.value = "";
   };
