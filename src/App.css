@@ -5,7 +5,6 @@
   text-align: center;
 }
 
-
 .taskContainer {
   margin-top: 15px;
 
@@ -18,12 +17,39 @@
   border: solid 0.5px rgb(105, 104, 104);
   box-shadow: 0.5px 0.5px 5px rgb(97, 96, 96);
 }
-.taskContainer li {
+
+.done {
+  margin-top: 15px;
+
+  min-height: 40px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border: solid 0.5px rgb(105, 104, 104);
+  box-shadow: 0.5px 0.5px 5px rgb(97, 96, 96);
+
+  background-color: #a3d855;
+  opacity: 0.6;
+}
+
+.done .task {
+  text-decoration: line-through;
+
+}
+
+.task {
   margin-left: 5px;
   margin-right: 5px;
 
   text-align: left;
+  list-style: none;
+
+  font: normal 12pt Arial;
+  text-shadow: 1px 1px 5px black;
 }
+
 .buttonContainer {
   display: flex;
   height: 25px;

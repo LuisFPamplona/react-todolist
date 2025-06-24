@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { saveTasks } from "../storage/localStorageUtils.js";
 
 const AdicionarTask = ({ setTaskList, taskList }) => {
   const inputRef = useRef();
@@ -16,6 +17,7 @@ const AdicionarTask = ({ setTaskList, taskList }) => {
 
         setTaskList(() => {
           const newTaskList = [...taskList, newTask];
+          saveTasks(newTaskList)
           return newTaskList;
         });
       }
