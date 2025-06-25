@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { saveTasks } from "../storage/localStorageUtils.js";
+import { Plus } from "lucide-react";
 
 const AdicionarTask = ({ setTaskList, taskList }) => {
   const inputRef = useRef();
@@ -22,6 +23,7 @@ const AdicionarTask = ({ setTaskList, taskList }) => {
         });
       }
       
+      inputRef.current.focus()
       inputRef.current.value = "";
     };
 
@@ -29,9 +31,11 @@ const AdicionarTask = ({ setTaskList, taskList }) => {
   return (
     <>
       <div>
-        <form onSubmit={setNewTaskList} className="taskInput">
-          <input  type="text" ref={inputRef} autoFocus />
-          <button  onClick={setNewTaskList}>Adicionar</button>
+        <form onSubmit={setNewTaskList} className="flex">
+          <input  type="text" ref={inputRef} className="border-3 rounded-2xl mr-1.5 border-amber-50 text-gray-200 text-center w-96 h-12 text-2xl "/>
+          <button  onClick={setNewTaskList} className="border-2 rounded-full align-middle bg-amber-50 w-12 h-12 p-2.5 hover:bg-gray-300 transition-all cursor-pointer active:w-10 active:h-10 active:p-1.5">
+          <Plus />
+          </button>
         </form>
       </div>
     </>

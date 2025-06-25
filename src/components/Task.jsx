@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import React from "react";
 import { saveTasks } from "../storage/localStorageUtils";
+import { BookX, SquarePen } from "lucide-react";
 
 const Task = ({ setTaskList, taskList }) => {
   const tasks = [...taskList];
@@ -13,7 +14,7 @@ const Task = ({ setTaskList, taskList }) => {
       const taskListChecked = prevTasks.map((task) =>
         task.id === id ? { ...task, done: checked } : task
       );
-      saveTasks(taskListChecked)
+      saveTasks(taskListChecked);
       return taskListChecked;
     });
   }
@@ -26,23 +27,39 @@ const Task = ({ setTaskList, taskList }) => {
     return (
       <div
         key={task.id}
-        className={task.done ? "done" : "taskContainer"}
+        className={
+          task.done
+            ? "flex justify-between p-2 items-center border-1 mb-4 list-none bg-emerald-500  hover:bg-emerald-400 shadow-lg shadow-black/30 transform hover:scale-105 transition-all"
+            : "flex justify-between p-2 items-center border-1 mb-4 list-none bg-gray-100 rounded-2xl hover:bg-gray-50 transform hover:scale-105 transition-all"
+        }
         ref={taskRefs.current[task.id]}
       >
         <input
           type="checkbox"
-          checked = {task.done ? 'check' : '' }
+          className="accent-emerald-50 cursor-pointer h-4 w-4"
+          checked={task.done ? true : false}
           onChange={(e) => doneTask(e, task.id, taskRefs.current[task.id])}
         />
-        <li className="task">{task.text}</li>
-        <div className="buttonContainer">
+        <li
+          className={
+            task.done ? "text-amber-50 font-bold" : "text-neutral-900 font-bold"
+          }
+        >
+          {task.text}
+        </li>
+
+        <div className="flex flex-col p-1">
           <button
             onClick={() => removeTask(task.id, taskRefs.current[task.id])}
+            className="cursor-pointer pb-1"
           >
-            Delete
+            <BookX color="#fd3636" className="hover:scale-110 transition" />
           </button>
-          <button onClick={() => editTask(task.id, taskRefs.current[task.id])}>
-            Editar
+          <button
+            onClick={() => editTask(task.id, taskRefs.current[task.id])}
+            className="cursor-pointer pt-1"
+          >
+            <SquarePen color="#000000" className="hover:scale-110 transition" />
           </button>
         </div>
       </div>
@@ -50,16 +67,13 @@ const Task = ({ setTaskList, taskList }) => {
   });
 
   function removeTask(id) {
-    // const indexToRemove = tasks.findIndex((task) => task.id == id);
-    // tasks.splice(indexToRemove, 1);
-
-    setTaskList((prevTaskList) => {
-      const newTaskList = prevTaskList.filter((task) => task.id !== id);
-      saveTasks(newTaskList);
-      return newTaskList;
-    });
-
-    console.log(tasks);
+    if (confirm("Quer mesmo deletar essa tarefa?")) {
+      setTaskList((prevTaskList) => {
+        const newTaskList = prevTaskList.filter((task) => task.id !== id);
+        saveTasks(newTaskList);
+        return newTaskList;
+      });
+    }
   }
 
   function editTask(id) {
