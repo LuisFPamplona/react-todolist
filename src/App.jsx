@@ -5,9 +5,8 @@ function App() {
   return (
     <>
       <div>
-        <div className="bg-gradient-to-b from-neutral-900 to-amber-50 flex flex-col items-center  m-auto h-screen">
+        <div className=" flex flex-col">
           <div>
-            <h1 className="text-4xl text-white font-bold pt-8 pb-2">To-Do List</h1>
           </div>
           <div>
             <TodoList />

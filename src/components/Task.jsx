@@ -67,13 +67,11 @@ const Task = ({ setTaskList, taskList }) => {
   });
 
   function removeTask(id) {
-    if (confirm("Quer mesmo deletar essa tarefa?")) {
       setTaskList((prevTaskList) => {
         const newTaskList = prevTaskList.filter((task) => task.id !== id);
         saveTasks(newTaskList);
         return newTaskList;
       });
-    }
   }
 
   function editTask(id) {
