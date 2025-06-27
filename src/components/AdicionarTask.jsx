@@ -31,7 +31,7 @@ const AdicionarTask = ({ setTaskList, taskList }) => {
   return (
     <>
       <div>
-        <form onSubmit={setNewTaskList} className="flex justify-center items-center mb-8">
+        <form onSubmit={setNewTaskList} className="flex justify-center items-center mb-4">
           <input  type="text" placeholder="Digite sua nova tarefa" ref={inputRef} className="border-2 border-black font-bold rounded-2xl mr-1.5  text-gray-950 text-center w-96 h-12 text-2xl bg-amber-50 shadow-lg shadow-black/30"/>
           <button  onClick={setNewTaskList} className="border-1 rounded-full align-middle bg-amber-50 w-12 h-12 p-2.5 hover:bg-gray-300 transition-all cursor-pointer hover:scale-105 active:scale-90 shadow-lg shadow-black/30">
           <Plus className=" scale-130 "/>
