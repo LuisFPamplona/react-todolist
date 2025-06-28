@@ -6,16 +6,16 @@ function Header() {
       </div>
       <div>
         <a href="https://github.com/LuisFPamplona">
-          <img src="public\github-mark32.png" alt="github logo" />
+          <img src="/react-todolist/github-mark32.png" alt="GitHub" />
         </a>
       </div>
       <div>
         <a href="https://linkedin.com/in/luis-pamplona-552030310">
-          <img src="public\LI-In-Bug32.png" alt="linkedin logo" />
+          <img src="/react-todolist/LI-In-Bug32.png" alt="Linkedin" />
         </a>
       </div>
     </header>
   );
 }
 
-export default Header
+export default Header;

@@ -20,9 +20,13 @@ const TodoList = () => {
   const [alertText, setAlertText] = useState();
 
   useEffect(() => {
-    const savedTaskList = loadTasks();
+    if (loadTasks() == undefined) {
+      console.error("tasklist vazia");
+    } else {
+      const savedTaskList = loadTasks();
 
-    setTaskList(JSON.parse(savedTaskList));
+      setTaskList(JSON.parse(savedTaskList));
+    }
   }, []);
 
   return (
