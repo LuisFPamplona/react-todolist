@@ -1,17 +1,96 @@
 import { Check, X } from "lucide-react";
 import { loadTasks, saveTasks } from "../storage/localStorageUtils";
+import { useState } from "react";
 
-function DeleteAlerts({ setAlert, setTaskList, deleteId }) {
+function DeleteAlerts({ setAlert, setTaskList, deleteId, action, alertText }) {
   //-
   const idToDelete = deleteId;
+
+  function actionType(action) {
+    switch (action) {
+      case "removeTask":
+        removeTask(idToDelete);
+        break;
+      case "removeAll":
+        deleteTasks(action);
+        break;
+      case "removeDone":
+        deleteTasks(action);
+        break;
+      case "removePend":
+        deleteTasks(action);
+        break;
+      case "doneAll":
+        checkTasks(action);
+        break;
+      case "undoneAll":
+        checkTasks(action);
+        break;
+    }
+  }
 
   function removeTask(id) {
     setTaskList((prevTaskList) => {
       const newTaskList = prevTaskList.filter((task) => task.id !== id);
       saveTasks(newTaskList);
-      setAlert(false)
+      setAlert(false);
       return newTaskList;
     });
+  }
+
+  function deleteTasks(action) {
+    switch (action) {
+      case "removeAll":
+        setTaskList(() => {
+          const newTaskList = [];
+          saveTasks(newTaskList);
+          setAlert(false);
+          return newTaskList;
+        });
+        break;
+      case "removeDone":
+        setTaskList((prev) => {
+          const newTaskList = prev.filter((task) => task.done == false);
+          saveTasks(newTaskList);
+          setAlert(false);
+          return newTaskList;
+        });
+        break;
+      case "removePend":
+        setTaskList((prev) => {
+          const newTaskList = prev.filter((task) => task.done == true);
+          saveTasks(newTaskList);
+          setAlert(false);
+          return newTaskList;
+        });
+        break;
+    }
+  }
+
+  function checkTasks(action) {
+    switch (action) {
+      case "doneAll":
+        setTaskList((prev) => {
+          const newTaskList = prev.map((task) =>
+            task.done ? task : { ...task, done: true }
+          );
+          saveTasks(newTaskList);
+          setAlert(false);
+          return newTaskList;
+        });
+
+        break;
+      case "undoneAll":
+        setTaskList((prev) => {
+          const newTaskList = prev.map((task) =>
+            !task.done ? task : { ...task, done: false }
+          );
+          saveTasks(newTaskList);
+          setAlert(false);
+          return newTaskList;
+        });
+        break;
+    }
   }
 
   return (
@@ -19,7 +98,7 @@ function DeleteAlerts({ setAlert, setTaskList, deleteId }) {
       <div className="absolute ml-8 top-30 bg-amber-50 w-94 h-24 border rounded-2xl z-20 hover:scale-105  transition-all">
         <div>
           <div className="flex flex-col items-center justify-center align-middle p-4 gap-4">
-            <span className=" font-bold">Quer mesmo fazer isso?</span>
+            <span className="font-bold text-center">{alertText}</span>
           </div>
           <div className="flex items-center justify-around">
             <button
@@ -30,7 +109,7 @@ function DeleteAlerts({ setAlert, setTaskList, deleteId }) {
               <X className="border w-10 rounded-2xl bg-red-400" />
             </button>
             <button
-              onClick={() => removeTask(idToDelete)}
+              onClick={() => actionType(action)}
               className=" hover:scale-105 active:scale-85 transition-all"
             >
               <Check className="border w-10 rounded-2xl bg-green-400 " />

@@ -16,6 +16,8 @@ const TodoList = () => {
   const [searchText, setSearchText] = useState("");
   const [alert, setAlert] = useState(false);
   const [confirmAction, setConfirmAction] = useState();
+  const [action, setAction] = useState();
+  const [alertText, setAlertText] = useState();
 
   useEffect(() => {
     const savedTaskList = loadTasks();
@@ -32,7 +34,12 @@ const TodoList = () => {
         </div>
         <div>
           <AdicionarTask setTaskList={setTaskList} taskList={taskList} />
-          <ButtonBar setTaskList={setTaskList} taskList={taskList} />
+          <ButtonBar
+            setTaskList={setTaskList}
+            setAlert={setAlert}
+            setAction={setAction}
+            setAlertText={setAlertText}
+          />
           <Task
             confirmAction={confirmAction}
             setConfirmAction={setConfirmAction}
@@ -43,6 +50,8 @@ const TodoList = () => {
             setEditId={setEditId}
             searchText={searchText}
             setDeleteId={setDeleteId}
+            setAction={setAction}
+            setAlertText={setAlertText}
           />
           {edit && (
             <EditInput
@@ -57,6 +66,8 @@ const TodoList = () => {
               setAlert={setAlert}
               setTaskList={setTaskList}
               deleteId={deleteId}
+              action={action}
+              alertText={alertText}
             />
           )}
         </div>

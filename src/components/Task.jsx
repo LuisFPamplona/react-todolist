@@ -11,6 +11,8 @@ const Task = ({
   searchText,
   setAlert,
   setDeleteId,
+  setAction,
+  setAlertText,
 }) => {
   //const tasks = [...taskList];
   const filteredTasks = taskList.filter((task) =>
@@ -80,8 +82,10 @@ const Task = ({
   });
 
   function removeTask(id) {
+    setAlertText('Quer mesmo remover essa tarefa?')
     setAlert(true);
     setDeleteId(id);
+    setAction("removeTask");
   }
 
   function editTask(id) {

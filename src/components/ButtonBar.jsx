@@ -1,63 +1,17 @@
 import { Trash2, SquareCheck, Square, Rows3 } from "lucide-react";
 import { saveTasks } from "../storage/localStorageUtils";
 
-function ButtonBar({ taskList, setTaskList }) {
-  function deleteTasks(which) {
-    switch (which) {
-      case "del_all":
-        setTaskList(() => {
-          const newTaskList = [];
-          saveTasks(newTaskList);
-          return newTaskList;
-        });
-        break;
-      case "del_done":
-        setTaskList((prev) => {
-          const newTaskList = prev.filter((task) => task.done == false);
-          saveTasks(newTaskList);
-          return newTaskList;
-        });
-        break;
-      case "del_pend":
-        setTaskList((prev) => {
-          const newTaskList = prev.filter((task) => task.done == true);
-          saveTasks(newTaskList);
-          return newTaskList;
-        });
-        break;
-    }
-  }
-
-  function checkTasks(which) {
-    switch (which) {
-      case "check_all":
-        setTaskList((prev) => {
-          const newTaskList = prev.map((task) =>
-            task.done ? task : { ...task, done: true }
-          );
-          saveTasks(newTaskList);
-          return newTaskList;
-        });
-
-        break;
-      case "uncheck_all":
-        setTaskList((prev) => {
-          const newTaskList = prev.map((task) =>
-            !task.done ? task : { ...task, done: false }
-          );
-          saveTasks(newTaskList);
-          return newTaskList;
-        });
-        break;
-    }
-  }
-
+function ButtonBar({ setAction, setAlert, setAlertText }) {
   return (
     <>
       <div className="border-b-2 flex justify-between mb-2">
         <div className="text-sm font-bold text-center hover:scale-110 active:scale-95 transition-all">
           <button
-            onClick={() => deleteTasks("del_all")}
+            onClick={() => {
+              setAlertText('Quer mesmo remover TODAS as tarefas?')
+              setAlert(true);
+              setAction("removeAll");
+            }}
             className="cursor-pointer flex flex-col items-center justify-center align-middle w-20 "
           >
             <span>Excluír</span>
@@ -67,7 +21,11 @@ function ButtonBar({ taskList, setTaskList }) {
         </div>
         <div className="text-sm font-bold text-center hover:scale-110 active:scale-95 transition-all">
           <button
-            onClick={() => deleteTasks("del_done")}
+            onClick={() => {
+              setAlertText('Quer mesmo remover TODAS as tarefas CONCLUÍDAS?')
+              setAlert(true);
+              setAction("removeDone");
+            }}
             className="cursor-pointer flex flex-col items-center justify-center align-middle w-20 "
           >
             <span>Excluír</span>
@@ -77,7 +35,11 @@ function ButtonBar({ taskList, setTaskList }) {
         </div>
         <div className="text-sm font-bold text-center hover:scale-110 active:scale-95 transition-all">
           <button
-            onClick={() => deleteTasks("del_pend")}
+            onClick={() => {
+              setAlertText('Quer mesmo remover TODAS as tarefas PENDENTES?')
+              setAlert(true);
+              setAction("removePend");
+            }}
             className="cursor-pointer flex flex-col items-center justify-center align-middle w-20 "
           >
             <span>Excluír</span>
@@ -87,7 +49,11 @@ function ButtonBar({ taskList, setTaskList }) {
         </div>
         <div className="text-sm font-bold text-center hover:scale-110 active:scale-95 transition-all">
           <button
-            onClick={() => checkTasks("check_all")}
+            onClick={() => {
+              setAlertText('Quer mesmo marcar TODAS as tarefas como CONCLUÍDAS?')
+              setAlert(true);
+              setAction("doneAll");
+            }}
             className="cursor-pointer flex flex-col items-center justify-center align-middle w-20 "
           >
             <span>Concluír</span>
@@ -97,7 +63,11 @@ function ButtonBar({ taskList, setTaskList }) {
         </div>
         <div className="text-sm font-bold text-center hover:scale-110 active:scale-95 transition-all">
           <button
-            onClick={() => checkTasks("uncheck_all")}
+            onClick={() => {
+              setAlertText('Quer mesmo marcar TODAS as tarefas como PENDENTES?')
+              setAlert(true);
+              setAction("undoneAll");
+            }}
             className="cursor-pointer flex flex-col items-center justify-center align-middle w-20 "
           >
             <span>Desmarcar</span>
