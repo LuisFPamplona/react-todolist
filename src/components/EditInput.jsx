@@ -54,7 +54,7 @@ function EditInput({ setTaskList, setEdit, editId }) {
       </div>
       <div
         ref={blockRef}
-        className="w-screen h-screen absolute top-0 right-0 bottom-0 left-0 bg-white opacity-40 z-10 backdrop-blur-xs"
+        className="w-screen h-screen absolute top-0 right-0 bottom-0 left-0 bg-white opacity-40 z-10 backdrop-blur-3xl"
         onClick={() => setEdit(false)}
       ></div>
     </>
