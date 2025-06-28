@@ -56,8 +56,8 @@ const Task = ({
           ref={taskRefs.current[task.id]}
           className={
             task.done
-              ? "text-amber-50 font-bold p-4 max-w-96"
-              : "text-neutral-900 font-bold p-4 max-w-96"
+              ? "text-amber-50 font-bold p-4 max-w-96 text-center"
+              : "text-neutral-900 font-bold p-4 max-w-96 text-center"
           }
         >
           {task.text}
@@ -82,7 +82,7 @@ const Task = ({
   });
 
   function removeTask(id) {
-    setAlertText('Quer mesmo remover essa tarefa?')
+    setAlertText("Quer mesmo remover essa tarefa?");
     setAlert(true);
     setDeleteId(id);
     setAction("removeTask");
