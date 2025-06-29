@@ -95,9 +95,9 @@ function DeleteAlerts({ setAlert, setTaskList, deleteId, action, alertText }) {
 
   return (
     <>
-      <div className="absolute ml-8 top-30 bg-amber-50 w-94 h-24 border rounded-2xl z-20 hover:scale-105  transition-all">
+      <div className="absolute bg-amber-50 w-80 h-28 border rounded-2xl z-20 hover:scale-105  transition-all top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <div>
-          <div className="flex flex-col items-center justify-center align-middle p-4 gap-4">
+          <div className="flex flex-col items-center justify-center align-middle p-2 gap-4">
             <span className="font-bold text-center">{alertText}</span>
           </div>
           <div className="flex items-center justify-around">
@@ -106,13 +106,13 @@ function DeleteAlerts({ setAlert, setTaskList, deleteId, action, alertText }) {
               type="button"
               className=" hover:scale-105 active:scale-85 transition-all"
             >
-              <X className="border w-10 rounded-2xl bg-red-400" />
+              <X className="border w-10 rounded-2xl bg-red-400 h-10" />
             </button>
             <button
               onClick={() => actionType(action)}
               className=" hover:scale-105 active:scale-85 transition-all"
             >
-              <Check className="border w-10 rounded-2xl bg-green-400 " />
+              <Check className="border w-10 rounded-2xl bg-green-400 h-10" />
             </button>
           </div>
         </div>

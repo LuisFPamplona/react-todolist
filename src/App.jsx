@@ -7,7 +7,7 @@ function App() {
     <>
       <div>
         <div>
-          <Header />
+          {/* <Header /> */}
           <div className="mb-12">
             <TodoList />
             <div className="text-center">

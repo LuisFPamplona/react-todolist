@@ -19,6 +19,32 @@ const Task = ({
     task.text.toLowerCase().includes(searchText.toLowerCase())
   );
   const taskRefs = useRef({});
+  const [draggedTaskId, setDraggedTaskId] = useState(null);
+
+  function handleDragStart(e, id) {
+    setDraggedTaskId(id);
+  }
+
+  function handleDragOver(e) {
+    e.preventDefault();
+  }
+
+  function handleDrop(e, targetId) {
+    const draggedIndex = taskList.findIndex(
+      (task) => task.id === draggedTaskId
+    );
+    const targetIndex = taskList.findIndex((task) => task.id === targetId);
+
+    if (draggedIndex === -1 || targetId === -1) return;
+
+    const updatedTasks = [...taskList];
+    const [draggedItem] = updatedTasks.splice(draggedIndex, 1);
+    updatedTasks.splice(targetIndex, 0, draggedItem);
+
+    setTaskList(updatedTasks);
+    saveTasks(updatedTasks);
+    setDraggedTaskId(null);
+  }
 
   function doneTask(event, id) {
     const checked = event.target.checked;
@@ -45,6 +71,10 @@ const Task = ({
             ? "flex justify-between p-2 items-center border-1 mb-4 list-none bg-emerald-500  hover:bg-emerald-400 shadow-lg shadow-black/30 transform hover:scale-105 transition-all"
             : "flex justify-between p-2 items-center border-1 mb-4 list-none bg-gray-100 rounded-2xl hover:bg-gray-50 transform hover:scale-105 transition-all"
         }
+        draggable
+        onDragStart={(e) => handleDragStart(e, task.id)}
+        onDragOver={handleDragOver}
+        onDrop={(e) => handleDrop(e, task.id)}
       >
         <input
           type="checkbox"

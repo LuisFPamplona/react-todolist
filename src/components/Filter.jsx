@@ -1,9 +1,7 @@
 import React, { useRef } from "react";
-import styles from "../style/Filter.module.css";
 import { loadTasks } from "../storage/localStorageUtils";
-import { ListFilter } from "lucide-react";
 
-function Filter({ setTaskList }) {
+function Filter({ setTaskList, divDisplay }) {
   const doneRef = useRef();
   const pendRef = useRef();
   const allRef = useRef();
@@ -50,8 +48,9 @@ function Filter({ setTaskList }) {
 
   return (
     <>
-      <ListFilter />
-      <div className="flex justify-center gap-4 p-4 text-gray-900 text-sm font-bold">
+      <div
+        className={`flex-col justify-center gap-4 p-4 text-gray-900 text-[8pt] font-bold bg-white border rounded-2xl fixed top-14 right-2 ${divDisplay}`}
+      >
         <div className="flex flex-col items-center ">
           <input
             type="checkbox"

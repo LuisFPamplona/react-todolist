@@ -18,7 +18,7 @@ const TodoList = () => {
   const [confirmAction, setConfirmAction] = useState();
   const [action, setAction] = useState();
   const [alertText, setAlertText] = useState();
-
+  const [divDisplay, setDivDisplay] = useState("hidden");
   useEffect(() => {
     if (loadTasks() == undefined) {
       console.error("tasklist vazia");
@@ -31,19 +31,21 @@ const TodoList = () => {
 
   return (
     <>
-      <div className="flex mt-10 mr-84 justify-center">
-        <div className="border-1 shadow-lg shadow-black/30 w-64 h-fit p-2 mr-8 rounded-2xl">
-          <Filter taskList={taskList} setTaskList={setTaskList} />
-          <SearchBar searchText={searchText} setSearchText={setSearchText} />
-        </div>
+      <div className="flex mt-2 items-center justify-center">
         <div>
-          <AdicionarTask setTaskList={setTaskList} taskList={taskList} />
+          <SearchBar
+            searchText={searchText}
+            setSearchText={setSearchText}
+            divDisplay={divDisplay}
+            setDivDisplay={setDivDisplay}
+          />
           <ButtonBar
             setTaskList={setTaskList}
             setAlert={setAlert}
             setAction={setAction}
             setAlertText={setAlertText}
           />
+          <AdicionarTask setTaskList={setTaskList} taskList={taskList} />
           <Task
             confirmAction={confirmAction}
             setConfirmAction={setConfirmAction}
@@ -74,6 +76,11 @@ const TodoList = () => {
               alertText={alertText}
             />
           )}
+          <Filter
+            taskList={taskList}
+            setTaskList={setTaskList}
+            divDisplay={divDisplay}
+          />
         </div>
       </div>
     </>
