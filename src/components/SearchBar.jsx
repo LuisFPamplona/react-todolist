@@ -12,7 +12,7 @@ function SearchBar({ searchText, setSearchText, setDivDisplay, divDisplay }) {
   }
   return (
     <>
-      <div className="flex align-middle justify-left gap-9.5 items-center mb-1.5 font-bold h-12">
+      <div className="flex align-middle justify-left gap-4 items-center mb-1.5 font-bold h-12">
         <div className="flex gap-2 border pl-2">
           <Search />
           <input
