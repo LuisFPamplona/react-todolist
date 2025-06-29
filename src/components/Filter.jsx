@@ -49,7 +49,7 @@ function Filter({ setTaskList, divDisplay }) {
   return (
     <>
       <div
-        className={`flex-col justify-center gap-4 p-4 text-gray-900 text-[8pt] font-bold bg-white border rounded-2xl fixed top-14 right-2 ${divDisplay}`}
+        className={`flex-col justify-center gap-4 p-4 text-gray-900 text-[8pt] font-bold bg-white border rounded-2xl ${divDisplay}`}
       >
         <div className="flex flex-col items-center ">
           <input

@@ -31,7 +31,7 @@ const TodoList = () => {
 
   return (
     <>
-      <div className="flex mt-2 items-center justify-center">
+      <div className="flex mt-2 items-center justify-center relative">
         <div>
           <SearchBar
             searchText={searchText}
@@ -76,11 +76,13 @@ const TodoList = () => {
               alertText={alertText}
             />
           )}
-          <Filter
-            taskList={taskList}
-            setTaskList={setTaskList}
-            divDisplay={divDisplay}
-          />
+          <div className="absolute top-0 ml-64 mt-10">
+            <Filter
+              taskList={taskList}
+              setTaskList={setTaskList}
+              divDisplay={divDisplay}
+            />
+          </div>
         </div>
       </div>
     </>

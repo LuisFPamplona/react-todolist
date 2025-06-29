@@ -38,7 +38,7 @@ const AdicionarTask = ({ setTaskList, taskList }) => {
             placeholder="Digite sua nova tarefa"
             ref={inputRef}
             className="border-2 border-black font-bold rounded-2xl mr-1.5
-          text-gray-950 text-center bg-amber-50 shadow-lg shadow-black/30 w-72 h-12"
+          text-gray-950 text-center bg-amber-50 shadow-lg shadow-black/30 w-72 h-12 "
           />
           <button
             onClick={setNewTaskList}
