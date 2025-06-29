@@ -76,7 +76,7 @@ const TodoList = () => {
               alertText={alertText}
             />
           )}
-          <div className="absolute top-0 ml-64 mt-10">
+          <div className="absolute top-0 ml-72 mt-10">
             <Filter
               taskList={taskList}
               setTaskList={setTaskList}

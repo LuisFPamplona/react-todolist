@@ -12,7 +12,7 @@ function SearchBar({ searchText, setSearchText, setDivDisplay, divDisplay }) {
   }
   return (
     <>
-      <div className="flex align-middle justify-center gap-6 items-center mb-1.5 font-bold h-12">
+      <div className="flex align-middle justify-left gap-9.5 items-center mb-1.5 font-bold h-12">
         <div className="flex gap-2 border pl-2">
           <Search />
           <input
@@ -20,7 +20,7 @@ function SearchBar({ searchText, setSearchText, setDivDisplay, divDisplay }) {
             placeholder="Procurando tarefa específica?"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
-            className="text-[10pt]  bg-transparent w-50 outline-0"
+            className="text-[10pt]  bg-transparent w-60 outline-0"
           />
         </div>
         <button onClick={decideDisplay}>
