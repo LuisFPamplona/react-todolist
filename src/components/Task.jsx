@@ -68,8 +68,8 @@ const Task = ({
         key={task.id}
         className={
           task.done
-            ? "flex justify-between p-2 items-center border-1 w-94 mb-4 list-none bg-emerald-500  hover:bg-emerald-400 shadow-lg shadow-black/30 transform hover:scale-101 transition-all"
-            : "flex justify-between p-2 items-center border-1 w-94 mb-4 list-none bg-gray-100 rounded-2xl hover:bg-gray-50 transform hover:scale-101 transition-all"
+            ? "flex justify-between p-2 items-center border-1 w-86 mb-4 list-none bg-emerald-500  hover:bg-emerald-400 shadow-lg shadow-black/30 transform hover:scale-101 transition-all"
+            : "flex justify-between p-2 items-center border-1 w-86 mb-4 list-none bg-gray-100 rounded-2xl hover:bg-gray-50 transform hover:scale-101 transition-all"
         }
         draggable
         onDragStart={(e) => handleDragStart(e, task.id)}

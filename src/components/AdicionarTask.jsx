@@ -28,26 +28,22 @@ const AdicionarTask = ({ setTaskList, taskList }) => {
 
   return (
     <>
-      <div>
-        <form
-          onSubmit={setNewTaskList}
-          className="flex justify-center items-center mb-4"
-        >
+      <form onSubmit={setNewTaskList}>
+        <div className="border flex justify-between h-12 mb-6 p-1 w-86">
           <input
             type="text"
             placeholder="Digite sua nova tarefa"
             ref={inputRef}
-            className="border-2 border-black font-bold rounded-2xl mr-1.5
-          text-gray-950 text-center bg-amber-50 shadow-lg shadow-black/30 w-72 h-12 "
+            className="outline-0  w-76 text-center p-2"
           />
           <button
             onClick={setNewTaskList}
-            className="border-1 rounded-full align-middle bg-amber-50 w-12 h-12 hover:bg-gray-300 transition-all cursor-pointer hover:scale-105 active:scale-90 shadow-lg shadow-black/30"
+            className="w-14 flex justify-center items-center"
           >
-            <Plus className=" scale-130 items-center ml-2.5" />
+            <Plus className="scale-180" />
           </button>
-        </form>
-      </div>
+        </div>
+      </form>
     </>
   );
 };

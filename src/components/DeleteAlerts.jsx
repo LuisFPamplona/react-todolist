@@ -119,7 +119,7 @@ function DeleteAlerts({ setAlert, setTaskList, deleteId, action, alertText }) {
       </div>
       <div
         onClick={() => setAlert(false)}
-        className="w-screen h-screen absolute top-0 right-0 bottom-0 left-0 bg-white opacity-40 z-10 backdrop-blur-3xl"
+        className="w-full h-full absolute top-0 right-0 bottom-0 left-0 bg-white opacity-40 z-10 backdrop-blur-3xl"
       ></div>
     </>
   );
