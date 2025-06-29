@@ -7,6 +7,7 @@ import SearchBar from "./SearchBar";
 import EditInput from "./EditInput";
 import ButtonBar from "./buttonBar";
 import DeleteAlerts from "./DeleteAlerts";
+import Footer from "./Footer";
 
 const TodoList = () => {
   const [taskList, setTaskList] = useState([]);
@@ -76,12 +77,15 @@ const TodoList = () => {
               alertText={alertText}
             />
           )}
-          <div className="absolute top-0 ml-65 mt-10">
+          <div className="absolute top-0 ml-65 mt-10 ">
             <Filter
               taskList={taskList}
               setTaskList={setTaskList}
               divDisplay={divDisplay}
             />
+          </div>
+          <div className="fixed bottom-0 left-0 right-0 w-full border-t">
+            <Footer />
           </div>
         </div>
       </div>
