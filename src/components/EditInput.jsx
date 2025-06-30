@@ -24,7 +24,7 @@ function EditInput({ setTaskList, setEdit, editId }) {
 
   return (
     <>
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-amber-50 w-80 h-28 border z-20 hover:scale-105  transition-all">
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-neutral-50 w-80 h-28 border z-20 hover:scale-105  transition-all">
         <form
           onSubmit={(e) => {
             e.preventDefault();

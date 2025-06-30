@@ -26,7 +26,6 @@ const TodoList = () => {
       console.error("tasklist vazia");
     } else {
       const savedTaskList = loadTasks();
-
       setTaskList(JSON.parse(savedTaskList));
     }
   }, []);

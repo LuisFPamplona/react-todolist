@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import React from "react";
 import { saveTasks } from "../storage/localStorageUtils";
 import { BookX, SquarePen } from "lucide-react";
+import EmptyTaskAdvice from "./EmptyTaskAdvice";
 
 const Task = ({
   setTaskList,
@@ -15,9 +16,10 @@ const Task = ({
   setAlertText,
 }) => {
   //const tasks = [...taskList];
-  const filteredTasks = taskList.filter((task) =>
-    task.text.toLowerCase().includes(searchText.toLowerCase())
-  );
+  const filteredTasks = taskList.filter((task) => {
+    return task.text.toLowerCase().includes(searchText.toLowerCase());
+  });
+
   const taskRefs = useRef({});
   const [draggedTaskId, setDraggedTaskId] = useState(null);
 
@@ -62,7 +64,6 @@ const Task = ({
     if (!taskRefs.current[task.id]) {
       taskRefs.current[task.id] = React.createRef();
     }
-
     return (
       <div
         key={task.id}
@@ -125,6 +126,7 @@ const Task = ({
 
   return (
     <>
+      {filteredTasks.length == 0 && <EmptyTaskAdvice />}
       <div>{renderTask}</div>
     </>
   );
