@@ -95,7 +95,7 @@ function DeleteAlerts({ setAlert, setTaskList, deleteId, action, alertText }) {
 
   return (
     <>
-      <div className="absolute bg-amber-50 w-80 h-28 border rounded-2xl z-20 hover:scale-105  transition-all top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+      <div className="absolute bg-neutral-50 w-80 h-28 border rounded-2xl z-20 hover:scale-105  transition-all top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <div>
           <div className="flex flex-col items-center justify-center align-middle p-2 gap-4">
             <span className="font-bold text-center">{alertText}</span>

@@ -8,6 +8,7 @@ import EditInput from "./EditInput";
 import ButtonBar from "./buttonBar";
 import DeleteAlerts from "./DeleteAlerts";
 import Footer from "./Footer";
+import Header from "./Header";
 
 const TodoList = () => {
   const [taskList, setTaskList] = useState([]);
@@ -34,6 +35,9 @@ const TodoList = () => {
     <>
       <div className="flex mt-2 items-center justify-center relative">
         <div>
+          <div>
+            <Header />
+          </div>
           <SearchBar
             searchText={searchText}
             setSearchText={setSearchText}
@@ -77,14 +81,14 @@ const TodoList = () => {
               alertText={alertText}
             />
           )}
-          <div className="absolute top-0 ml-65 mt-10 ">
+          <div className="absolute top-0 ml-65 mt-22 ">
             <Filter
               taskList={taskList}
               setTaskList={setTaskList}
               divDisplay={divDisplay}
             />
           </div>
-          <div className="fixed bottom-0 left-0 right-0 w-full border-t">
+          <div className="bottom-0 left-0 right-0 w-full">
             <Footer />
           </div>
         </div>
