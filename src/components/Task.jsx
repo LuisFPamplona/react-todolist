@@ -48,12 +48,18 @@ const Task = ({
     setDraggedTaskId(null);
   }
 
-  function doneTask(event, id) {
-    const checked = event.target.checked;
+  function doneTask(id, done) {
+    let doneTask;
+    if (done) {
+      doneTask = false;
+    }
+    if (!done) {
+      doneTask = true;
+    }
 
     setTaskList((prevTasks) => {
       const taskListChecked = prevTasks.map((task) =>
-        task.id === id ? { ...task, done: checked } : task
+        task.id === id ? { ...task, done: doneTask } : task
       );
       saveTasks(taskListChecked);
       return taskListChecked;
@@ -76,19 +82,20 @@ const Task = ({
         onDragStart={(e) => handleDragStart(e, task.id)}
         onDragOver={handleDragOver}
         onDrop={(e) => handleDrop(e, task.id)}
+        onDoubleClick={() => doneTask(task.id, task.done)}
       >
-        <input
+        {/* <input
           type="checkbox"
           className="accent-emerald-50 cursor-pointer h-4 w-4"
           checked={task.done ? true : false}
           onChange={(e) => doneTask(e, task.id, taskRefs.current[task.id])}
-        />
+        /> */}
         <li
           ref={taskRefs.current[task.id]}
           className={
             task.done
-              ? "text-amber-50 font-bold p-4 text-center"
-              : "text-neutral-900 font-bold p-4 text-center"
+              ? "text-amber-50 font-bold p-4 text-center w-72"
+              : "text-neutral-900 font-bold p-4 text-center w-72"
           }
         >
           {task.text}
